@@ -4,16 +4,14 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from dotenv import load_dotenv
 
-# Load variables from the .env file
 load_dotenv()
 
 app = FastAPI()
 
-# Get the API key safely from the environment
+
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 def get_weather_data(city: str):
-    # Check if the API key was loaded successfully
     if not API_KEY:
         print("Warning: OPENWEATHER_API_KEY not found in .env")
         return None
